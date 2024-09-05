@@ -110,16 +110,16 @@
       "C1":C1, "C2":C2, "C3":C3, "C4":C4, "C5":C5, "C6":C6, "C7":C7, "C8":C8, "C9":C9, "C10":C10, "C11":C11, "C12":C12
     }
     //INPUT from participants   
-    /*var idnum = parseInt(jsPsych.data.getURLVariable('idnum'))
+    var idnum = parseInt(jsPsych.data.getURLVariable('idnum'))
     var soa = parseInt(jsPsych.data.getURLVariable('soa'))
     var set = jsPsych.data.getURLVariable('set')
     var set1_text = jsPsych.data.getURLVariable('set1')
-    var set2_text = jsPsych.data.getURLVariable('set2')*/
-    var idnum = 3
-    var soa = 200
-    var set = "C"
-    var set1_text = "C1"
-    var set2_text = "C3"
+    var set2_text = jsPsych.data.getURLVariable('set2')
+    //var idnum = 3
+    //var soa = 200
+    //var set = "C"
+    //var set1_text = "C1"
+    //var set2_text = "C3"
 
     function shuffleArray(array) {
         for (var g = array.length - 1; g > 0; g--) {
@@ -141,8 +141,8 @@ if (set === "A"){  // if the participant needs A_Set as stimuli
   var practice_pos_list = ['從容','立足','年假']
   var practice_neg_list = ['絕交','絕路','凶猛']
 } else if (set === "C"){ // if the participant needs C_Set as stimuli
-  //var raw_buffer_list = ['中獎','犯人','中風','白痴','加油','好運','不朽','壯觀','內奸','反叛']
-  var raw_buffer_list = ['buff1','buff2','buff3','buff4','buff5','buff6','buff7','buff8','buff9','buff10']
+  var raw_buffer_list = ['中獎','犯人','中風','白痴','加油','好運','不朽','壯觀','內奸','反叛']
+  //var raw_buffer_list = ['buff1','buff2','buff3','buff4','buff5','buff6','buff7','buff8','buff9','buff10']
   var buffer_list_temp = shuffleArray(raw_buffer_list)
   var buffer_list = buffer_list_temp.slice(0, 2)
   var buffer_list_break_1 = buffer_list_temp.slice(3,5)
@@ -171,8 +171,8 @@ test_exp_2 = ['入賬','小孩','光棍','回家']
 
 
 
-var experiment_list= [...test_exp_1, ...test_exp_2]
-//var experiment_list= [...set1, ...set2]
+//var experiment_list= [...test_exp_1, ...test_exp_2]
+var experiment_list= [...set1, ...set2]
 
 var practice_list = [...practice_neg_list, ...practice_pos_list]
 
@@ -212,9 +212,9 @@ var practice_list = [...practice_neg_list, ...practice_pos_list]
       key_valence_text = `<p>
       <p class="blue-line"><b>
       <p><b>請評定您認為該複合詞是表達正面或是負面的意思。
-      <p class="red-line"><b>如果意思是<u>負面</u>, 請按下「Q」鍵。
-      <p class="red-line"><b>如果意思是<u>正面</u>, 請按下「P」鍵。
-      <p>請作出快速而準確的按鍵反應。</p></p>
+      <p class="red-line"><b>意思是<u>負面</u>, 請按下「Q」鍵。
+      <p class="red-line"><b>意思是<u>正面</u>, 請按下「P」鍵。
+      <p></p></p>
       <p><i><u><b>`} 
     else {
       key_assignment = "posLeft";
@@ -234,9 +234,9 @@ var practice_list = [...practice_neg_list, ...practice_pos_list]
       key_valence_text = `<p>
       <p class="blue-line"><b>
       <p><b>請評定您認為該複合詞是表達正面或是負面的意思。
-      <p class="red-line"><b>如果意思是<u>負面</u>, 請按下「P」鍵。
-      <p class="red-line"><b>如果意思是<u>正面</u>, 請按下「Q」鍵。
-      <p>請作出快速而準確的按鍵反應。</p></p>
+      <p class="red-line"><b>意思是<u>負面</u>, 請按下「P」鍵。
+      <p class="red-line"><b>意思是<u>正面</u>, 請按下「Q」鍵。
+      <p></p></p>
       <p><i><u><b>`
     }
     // pq position
@@ -268,30 +268,6 @@ var practice_list = [...practice_neg_list, ...practice_pos_list]
 
     valence_chance = Array(experiment_list.length).fill(false).map((_, index) => index >= no_valence_length);
     console.log(valence_chance)
-
-    /*var prac_proposed_response
-    var prac_proposed_response = practice_list.map(item=>{
-      if (practice_neg_list.includes(item)){
-        return "negative";
-      } else if (practice_pos_list.includes(item)){
-        return "positive";
-      }
-    })
-  var prac_proposed_response_key = prac_proposed_response.map(item=>{
-    if (item === "negative"){
-      if (key_assignment === "posRight"){
-        return "a";
-      }else if (key_assignment === "posLeft"){
-        return "l";
-      }
-    } else if (item === "positive"){
-      if (key_assignment === "posRight"){
-        return "l";
-      }else if (key_assignment === "posLeft"){
-        return "a";
-      }
-    }
-  })*/
 
 console.log(experiment_positions_pre)
 
