@@ -115,11 +115,11 @@
     var set = jsPsych.data.getURLVariable('set')
     var set1_text = jsPsych.data.getURLVariable('set1')
     var set2_text = jsPsych.data.getURLVariable('set2')
-    //var idnum = 3
-    //var soa = 200
-    //var set = "C"
-    //var set1_text = "C1"
-    //var set2_text = "C3"
+    /*var idnum = 8
+    var soa = 500
+    var set = "C"
+    var set1_text = "C1"
+    var set2_text = "C7"*/
 
     function shuffleArray(array) {
         for (var g = array.length - 1; g > 0; g--) {
@@ -334,6 +334,8 @@ for (let j = 0; j < practice_list.length; j++) {
 		};
     timeline.push(instruction_2)
 
+    var direction = "v2s"
+
     var instruction_3 = {
       type: jsPsychHtmlButtonResponse,
       data: { screen: "instruction_3" },
@@ -347,7 +349,11 @@ for (let j = 0; j < practice_list.length; j++) {
         jsPsych.data.addProperties({
           idnum: idnum,
           soa: soa,
-          key_assignment: key_assignment
+          key_assignment: key_assignment,
+          direction: direction,
+          set: set,
+          set1_text: set1_text,
+          set2_text: set2_text
         });
       }
 		};
