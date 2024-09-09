@@ -115,11 +115,13 @@
     var set = jsPsych.data.getURLVariable('set')
     var set1_text = jsPsych.data.getURLVariable('set1')
     var set2_text = jsPsych.data.getURLVariable('set2')
+    var key_assignment = jsPsych.data.getURLVariable('key_assignment')
     /*var idnum = 8
     var soa = 500
     var set = "C"
     var set1_text = "C1"
-    var set2_text = "C7"*/
+    var set2_text = "C7"
+    var key_assignment = "posLeft*/
 
     function shuffleArray(array) {
         for (var g = array.length - 1; g > 0; g--) {
@@ -194,8 +196,7 @@ var practice_list = [...practice_neg_list, ...practice_pos_list]
 
     var soa_duration = soa-150
     var key_assignment, key_text, key_valence_text
-    if (idnum % 2 === 0) {
-      key_assignment = "posRight";
+    if (key_assignment = "posRight") {
       key_text = 
       `<p>
       <p class="blue-line"><b>您的任務是透過按下對應的按鍵來判斷螢幕上顯示的字母是“p”還是“q”。
@@ -217,7 +218,6 @@ var practice_list = [...practice_neg_list, ...practice_pos_list]
       <p></p></p>
       <p><i><u><b>`} 
     else {
-      key_assignment = "posLeft";
       key_text = `
       <p>
       <p class="blue-line"><b>您的任務是透過按下對應的按鍵來判斷螢幕上顯示的字母是“p”還是“q”。
@@ -643,7 +643,7 @@ for (let j = 0; j < practice_list.length; j++) {
       on_finish: function(){
         //xxxxx console.log(jsPsych.data.get().filter({screen: 'stim'}).csv()); xxxxx//track    
         //jsPsych.data.get().filter({screen: 'pq_page'}).localSave('csv','set'+set+'_id'+idnum.toString()+'_'+soa.toString()+'_'+set1_text+set2_text+'.csv')
-        jsPsych.data.get().filter([{screen: "pq_page"}, {screen: "valence_page"},{screen: "pq_page_prac"}]).localSave('csv','v2s_set'+set+'_id'+idnum.toString()+'_'+soa.toString()+'_'+set1_text+set2_text+'.csv')
+        jsPsych.data.get().filter([{screen: "pq_page"}, {screen: "valence_page"},{screen: "pq_page_prac"}]).localSave('csv','v2s_set'+set+'_id'+idnum.toString()+'_'+soa.toString()+'_'+set1_text+set2_text+'_'+key_assignment+'.csv')
       }}
     timeline.push(fullscreen_off)
 
