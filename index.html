@@ -249,11 +249,22 @@ var practice_list = [...practice_neg_list, ...practice_pos_list]
     // pq position
     var target_positions_pre = ["topText", "bottomText"]
     var experiment_positions_pre, buffer_positions_pre, practice_positions_pre
-    if (experiment_list.length % 2 === 0) { //if e.g., 8
+    /*if (experiment_list.length % 2 === 0) { //if e.g., 8
       experiment_positions_pre = jsPsych.randomization.repeat(target_positions_pre, experiment_list.length/target_positions_pre.length);} 
     else { //if e.g., 9
       experiment_positions_pre = [...jsPsych.randomization.repeat(target_positions_pre, (experiment_list.length-1)/target_positions_pre.length),"topText"];
+    }*/
+    var experiment_positions_pre = experiment_list.map(item => {
+    if (set1.includes(item)) {
+        return "topText";
     }
+    if (set2.includes(item)) {
+        return "bottomText";
+    }
+    return null; 
+});
+
+
     buffer_positions_pre = jsPsych.randomization.repeat(target_positions_pre, 1)
     practice_positions_pre = jsPsych.randomization.repeat(target_positions_pre, 3)
 
